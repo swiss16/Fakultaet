@@ -13,9 +13,11 @@ public:
 	~CBigNumber();
 
 	CBigNumber& operator=(CBigNumber& bigNumber);
-	CBigNumber& operator*(CBigNumber& bigNumber);
-	CBigNumber& operator+(CBigNumber& bigNumber);
+	CBigNumber& operator*(int number);
+	CBigNumber& operator+(int results[5]);
 
 	CBigNumber& fakultaet(int number);
+
+	
 };
 
