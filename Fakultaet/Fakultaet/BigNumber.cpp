@@ -68,7 +68,8 @@ CBigNumber& CBigNumber::operator*(int number)
 {
 	//number von 19999 ergibt 77333 zeichen
 	int _ValidDigits = *m_validDigits;
-	int _result[5];
+	//CBigNumber _result = *this;
+	int _result[5] = { 1, 0, 0, 0, 0 };
 //Temporäres Array mit den digits werten füllen	
 	for (int i = 0; i < 5; i++)
 	{
@@ -77,11 +78,14 @@ CBigNumber& CBigNumber::operator*(int number)
 	//Jeden Int Multiplizieren
 	for (int i = 0; i < _ValidDigits; i++)
 	{
+		//*_result.m_digits[i] = *m_digits[i] * number;
 		_result[i] = *m_digits[i] * number;
 	}
-	return *this+_result;
+	
+	//return *this+=*_result.m_digits;
+	return *this+=_result;
 }
-CBigNumber& CBigNumber::operator+(int results[5])
+CBigNumber& CBigNumber::operator+=(int results[5])
 {
 	int _tempNumber = 0;
 	int _tempUebertrag = 0;
@@ -97,6 +101,15 @@ CBigNumber& CBigNumber::operator+(int results[5])
 		
 		*m_digits[i] = _tempNumber;
 	}
+	*m_validDigits = 5;
+	/*for (int i = 5-1; i >=0; i--)
+	{
+		if (*m_digits[i] == 0)
+		{
+			*m_validDigits = i+1;
+		}
+		
+	}*/
 	return *this;
 }
 
@@ -111,11 +124,18 @@ CBigNumber& CBigNumber::fakultaet(int number)
 	else{
 		*m_isPositive = true; 
 	}
+	
 #pragma endregion
+	if (number != 0)
+	{
+		for (int i = 1; i <= number; i++)
+		{
+			*this = *this*i;
+		}
+	
+		
+		
+	}
 
-		CBigNumber *_result = new CBigNumber;
-		*_result = *this*number;
-
-
-	return *_result;
+	return *this;
 }
