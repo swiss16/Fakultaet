@@ -11,11 +11,14 @@ using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	CBigNumber *bigNumber1 = new CBigNumber;
+	CBigNumber bigNumber1;
+	CBigNumber bigNumber2 = bigNumber1;
+	bigNumber2.~CBigNumber();
+	_CrtDumpMemoryLeaks();
 	int zahl;
 	cout << "Zahl eingeben: ";
 	cin >> zahl;
-	bigNumber1->fakultaet(zahl);
+	bigNumber1.fakultaet(zahl);
 	
 	
 

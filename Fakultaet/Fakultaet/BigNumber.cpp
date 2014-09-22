@@ -25,23 +25,43 @@ CBigNumber::CBigNumber(const CBigNumber& bigNumber)
 	m_isPositive(new bool(*bigNumber.m_isPositive)),
 	m_validDigits(new int(*bigNumber.m_validDigits))
 {
-	memcpy(*bigNumber.m_digits, m_digits, 5);//Kopiert ein Array (Von, Nach, Arraygrösse)
+	//memcpy(*bigNumber.m_digits, m_digits, 5);//Kopiert ein Array (Von, Nach, Arraygrösse)
+	for (int i = 0; i < 5; i++)
+	{
+		delete m_digits[i];
+		m_digits[i] = new int(*bigNumber.m_digits[i]);
+	}
 }
 
 CBigNumber::~CBigNumber()
 {
 	delete m_basicNumber;
-	delete *m_digits;
 	delete m_isPositive;
 	delete m_validDigits;
+	for (int i = 0; i < 5; i++)
+	{
+		delete m_digits[i];
+		m_digits[i] = NULL;
+	}
 	m_basicNumber=NULL;
-	*m_digits = NULL;
 	m_isPositive = NULL;
 	m_validDigits = NULL;
 }
 
 CBigNumber& CBigNumber::operator=(CBigNumber& bigNumber)
 {
+	if (this != &bigNumber)
+	{
+	*m_basicNumber = *bigNumber.m_basicNumber;
+	*m_isPositive = *bigNumber.m_isPositive;
+	*m_validDigits = *bigNumber.m_validDigits;
+	//memcpy(*bigNumber.m_digits, *m_digits, 5);//Kopiert ein Array (Von, Nach, Arraygrösse)
+	for (int i = 0; i < 5; i++)
+	{
+		*m_digits[i] = *bigNumber.m_digits[i];
+	}
+
+	}
 	return *this;
 }
 CBigNumber& CBigNumber::operator*(int number)
@@ -68,10 +88,14 @@ CBigNumber& CBigNumber::operator+(int results[5])
 	for (int i = 0; i < 5; i++)
 	{
 		_tempNumber = results[i];
-		for (int i = *m_basicNumber; i < _tempNumber; i**m_basicNumber)
+		if (_tempNumber > *m_basicNumber-1)
 		{
-			//TODO: Logik umdenken, Wie könnte ich die einzzelnen Zahlen gemäss Basis auslesen
+			_tempUebertrag = _tempNumber / *m_basicNumber;
+			_tempNumber = _tempNumber % *m_basicNumber;
+			results[i + 1] += _tempUebertrag;
 		}
+		
+		*m_digits[i] = _tempNumber;
 	}
 	return *this;
 }
@@ -93,5 +117,5 @@ CBigNumber& CBigNumber::fakultaet(int number)
 		*_result = *this*number;
 
 
-	return *this;
+	return *_result;
 }
