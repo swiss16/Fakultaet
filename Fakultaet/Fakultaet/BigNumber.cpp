@@ -115,6 +115,11 @@ CBigNumber& CBigNumber::fakultaet(int number)
 	else{
 		*m_isPositive = true; 
 	}
+	m_digits[0] = new int(1);
+	for (int i = 1; i < 1001; i++)
+	{
+		m_digits[i] = new int(0);
+	}
 	
 #pragma endregion
 	if (number != 0)

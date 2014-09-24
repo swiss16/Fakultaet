@@ -24,7 +24,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	bigNumber1.fakultaet(zahl);
 	cout << bigNumber1;
 	cout << endl;
-	cout << "Die Berechnung hat " << clock() - start << " Milli-Sekunden gedauert." << endl;
+	cout << "Die Berechnung hat " << (clock() - start) << " Milli-Sekunden gedauert." << endl;
 	char egal;
 	cin >> egal;
 	return 0;
