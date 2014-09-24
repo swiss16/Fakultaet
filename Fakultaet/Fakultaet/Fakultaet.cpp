@@ -19,9 +19,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	cout << "Zahl eingeben: ";
 	cin >> zahl;
 	bigNumber1.fakultaet(zahl);
+	cout << bigNumber1;
 	
 	
-
 	return 0;
 }
 
