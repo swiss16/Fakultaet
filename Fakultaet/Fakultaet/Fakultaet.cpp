@@ -5,6 +5,7 @@
 #include "BigNumber.h"
 #include <iostream>
 #include <conio.h>
+#include <ctime>
 
 using namespace std;
 
@@ -12,16 +13,20 @@ using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
 	CBigNumber bigNumber1;
-	CBigNumber bigNumber2 = bigNumber1;
-	bigNumber2.~CBigNumber();
-	_CrtDumpMemoryLeaks();
+	//CBigNumber bigNumber2 = bigNumber1;
+	//bigNumber2.~CBigNumber();
+	//_CrtDumpMemoryLeaks();
 	int zahl;
-	cout << "Zahl eingeben: ";
+	cout << "Fakultät von: ";
 	cin >> zahl;
+	//stoppuhr
+	unsigned int start = clock();
 	bigNumber1.fakultaet(zahl);
 	cout << bigNumber1;
-	
-	
+	cout << endl;
+	cout << "Die Berechnung hat " << clock() - start << " Milli-Sekunden gedauert." << endl;
+	char egal;
+	cin >> egal;
 	return 0;
 }
 

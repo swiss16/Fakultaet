@@ -174,7 +174,7 @@ ostream& operator<<(ostream& o, const CBigNumber& num)
 		{
 			if (*num.m_digits[0] == 0)
 			{
-				o << "000";
+				o << "000'000";
 			}
 			else
 			{
