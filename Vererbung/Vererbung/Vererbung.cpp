@@ -6,7 +6,11 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	CEins eins;
+	{
+		CEins eins;
+	}
 	return 0;
+
 }
+
 

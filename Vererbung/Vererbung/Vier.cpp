@@ -7,12 +7,13 @@ using namespace std;
 
 CVier::CVier()
 {
-	cout << "CVier: 1" << endl;
+	cout << "CVier: 2" << endl;
 	
 }
 
 
 CVier::~CVier()
 {
-	cout << "~CVier: Ende" << endl;
+	//cout << "~CVier: Ende" << endl;
+	cout << "~CVier: 7" << endl;
 }

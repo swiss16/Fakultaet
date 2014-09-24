@@ -1,7 +1,5 @@
 #pragma once
-#include "Vier.h"
-class CDrei :
-	public CVier
+class CDrei
 {
 public:
 	CDrei();

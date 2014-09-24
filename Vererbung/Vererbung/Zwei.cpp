@@ -7,11 +7,13 @@ using namespace std;
 
 CZwei::CZwei()
 {
-	cout << "CZwei: 3" << endl;
+	//cout << "CZwei: 3" << endl;
+	cout << "CZwei: 1" << endl;
 }
 
 
 CZwei::~CZwei()
 {
-	cout << "~CZwei: 6" << endl;
+	//cout << "~CZwei: 6" << endl;
+	cout << "~CZwei: Ende" << endl;
 }
